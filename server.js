@@ -4,8 +4,8 @@ require("express-async-errors");
 //App starters Import
 const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
-const path = require('path');
+const bodyParser = require("body-parser");
+const path = require("path");
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,20 +49,21 @@ const errorHandler = require("./middleware/error-handler");
 //     max: 100 // limit each IP to 100 requests per windowMs
 //   })
 // );
-app.use(cors({
-  origin: 'http://127.0.0.1:5500',
-  methods: ['GET', 'POST']
-}));
-
+app.use(
+  cors({
+    origin: "https://gas-delivery-system.onrender.com",
+    methods: ["GET", "POST"],
+  })
+);
 
 // Define a route to serve the login.html file
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   // Adjust the file path to point to the login.html file location
-  res.sendFile(path.join(__dirname, 'public/login-register.html'));
+  res.sendFile(path.join(__dirname, "public/login-register.html"));
 });
 
 // Set up static file serving for other static assets if needed
-app.use(express.static(path.join(__dirname, 'public')));// app.use(helmet());
+app.use(express.static(path.join(__dirname, "public"))); // app.use(helmet());
 // app.use(xss());
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));

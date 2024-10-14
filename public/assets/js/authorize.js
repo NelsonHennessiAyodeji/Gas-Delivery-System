@@ -61,7 +61,7 @@ if (paymentBtn) {
         // console.log(newBalance);
 
         const res = await fetch(
-          "http://127.0.0.1:5500/users/updateWalletBalance",
+          "https://gas-delivery-system.onrender.com/users/updateWalletBalance",
           {
             method: "POST",
             headers: {
@@ -312,7 +312,7 @@ if (spanBalanceDisplay) {
 //       const balance = parseInt(spanBalanceDisplay.textContent.substring(2));
 //       if (price <= balance) {
 //         const total = Math.abs(price - balance)
-//         const res = await fetch('http://127.0.0.1:5500/users/updateWalletBalance', {
+//         const res = await fetch('https://gas-delivery-system.onrender.com/users/updateWalletBalance', {
 //             method: "POST",
 //             headers: {
 //               "Content-Type": "application/json"
@@ -352,7 +352,7 @@ const tableBody = document.getElementById("order-table-body");
 
 if (logoutTab != null) {
   logoutTab.addEventListener("click", async () => {
-    await fetch("http://127.0.0.1:5500/auth/logout", {
+    await fetch("https://gas-delivery-system.onrender.com/auth/logout", {
       method: "GET",
       // credentials: 'include'
     });
@@ -360,10 +360,13 @@ if (logoutTab != null) {
 }
 
 async function fillOrderTable() {
-  const response = await fetch("http://127.0.0.1:5500/orders/showAllMyOrders", {
-    method: "GET",
-    credentials: "include",
-  });
+  const response = await fetch(
+    "https://gas-delivery-system.onrender.com/orders/showAllMyOrders",
+    {
+      method: "GET",
+      credentials: "include",
+    }
+  );
 
   const orders = await response.json();
 
@@ -386,10 +389,13 @@ async function fillOrderTable() {
 
 async function fetchData() {
   try {
-    const response = await fetch("http://127.0.0.1:5500/users/showMe", {
-      method: "GET",
-      credentials: "include",
-    });
+    const response = await fetch(
+      "https://gas-delivery-system.onrender.com/users/showMe",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
 
     const data = await response.json();
     // console.log(data);
@@ -418,7 +424,7 @@ async function fetchData() {
 async function getWalletBalance() {
   if (walletBalance || balanceDisplay) {
     const res = await fetch(
-      `http://127.0.0.1:5500/users/getWalletBalance/${localStorage.getItem(
+      `https://gas-delivery-system.onrender.com/users/getWalletBalance/${localStorage.getItem(
         "email"
       )}`,
       {

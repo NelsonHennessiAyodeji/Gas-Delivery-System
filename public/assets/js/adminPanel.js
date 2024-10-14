@@ -4,7 +4,7 @@ const hoursWorkedCount = document.getElementById("hoursWorkedCount"); // TODO: i
 const happyCustomerCount = document.getElementById("happyCustomerCount"); // Total amount of users
 const tableBody = document.getElementById("order-table-body");
 
-const baseUrl = "http://127.0.0.1:5500";
+const baseUrl = "https://gas-delivery-system.onrender.com";
 
 async function getHappyCustomersCount() {
   const res = await fetch(`${baseUrl}/users`, {
@@ -37,10 +37,13 @@ async function getProductSoldCount() {
 }
 
 async function fillOrderTable() {
-  const response = await fetch(`http://127.0.0.1:5500/orders/`, {
-    method: "GET",
-    credentials: "include",
-  });
+  const response = await fetch(
+    `https://gas-delivery-system.onrender.com/orders/`,
+    {
+      method: "GET",
+      credentials: "include",
+    }
+  );
 
   const orders = await response.json();
   console.log(orders);

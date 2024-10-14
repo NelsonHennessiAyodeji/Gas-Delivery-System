@@ -15,7 +15,7 @@ const loginPasswordInput = document.getElementById("login-password");
 // Submit buttons
 const registerBtn = document.getElementById("register-btn");
 const loginBtn = document.getElementById("login-btn");
-const baseURL = "http://127.0.0.1:5500/auth";
+const baseURL = "https://gas-delivery-system.onrender.com/auth";
 // Billing details
 const billingDetails = document.getElementById("billingDetails");
 const orderBtn = document.getElementById("order-btn");
@@ -28,18 +28,21 @@ getBalance();
 if (billingDetails) {
   fetchData();
   orderBtn.addEventListener("click", async () => {
-    const res = await fetch(`http://127.0.0.1:5500/orders/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        shippingFee: 50,
-        total: localStorage.getItem("gasPrice"),
-        status: "delivered",
-        size: localStorage.getItem("gasSize"),
-      }),
-    });
+    const res = await fetch(
+      `https://gas-delivery-system.onrender.com/orders/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          shippingFee: 50,
+          total: localStorage.getItem("gasPrice"),
+          status: "delivered",
+          size: localStorage.getItem("gasSize"),
+        }),
+      }
+    );
 
     if (res.ok) {
       data = await res.json();
@@ -59,7 +62,7 @@ if (billingDetails) {
 
 async function getBalance() {
   const res = await fetch(
-    `http://127.0.0.1:5500/users/getWalletBalance/${localStorage.getItem(
+    `https://gas-delivery-system.onrender.com/users/getWalletBalance/${localStorage.getItem(
       "email"
     )}`,
     {
@@ -80,16 +83,19 @@ async function updateBalance() {
   console.log(balance);
   console.log(price);
   try {
-    await fetch("http://127.0.0.1:5500/users/updateWalletBalance", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        walletBalance: parseInt(balance - price),
-        userId: user.userId,
-      }),
-    });
+    await fetch(
+      "https://gas-delivery-system.onrender.com/users/updateWalletBalance",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          walletBalance: parseInt(balance - price),
+          userId: user.userId,
+        }),
+      }
+    );
     updateFunds = false;
   } catch (error) {
     updateFunds = false;
