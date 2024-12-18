@@ -1,6 +1,6 @@
 # To use the application, open this link: https://gas-delivery-system.onrender.com
 
-Please note that there will be a 30 - 60 seconds delay at first,but after then, you should be good. This happens because of the free tier on render, which is where I upload most of my projects on.
+> Please note that there will be a 30 - 60 seconds delay at first,but after then, you should be good. This happens because of the free tier on render, which is where I upload most of my projects on.
 
 (This project is far from complete, so you might experience some little bugs or uncompleted pages here and there)
 
